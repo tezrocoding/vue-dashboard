@@ -37,7 +37,7 @@ import TheWelcome from "../components/TheWelcome.vue";
 <script>
 import axios from "axios";
 const authToken =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTdjZWI0ODcyNWMyNmYwZTEyNGQ4Yjc5ZDU0OWFmZGQwYzFmOGQzYWUzM2Y0YTJlNjM2Y2U2YmI5NTQxY2ExMzEyNDlmN2MzOTAyOTBmZmMiLCJpYXQiOjE3MDAyNzc2ODcuODUzMDczLCJuYmYiOjE3MDAyNzc2ODcuODUzMDgxLCJleHAiOjIxNzM2NjMyODcuODM0NjA1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.rdon5qbmKwXE1bxGVaDLSd3Z_Q9t959OaZXpml2mnY_1NEDGNnTzbHmHY89xraiMMkgVzVwJUgvnQFrgQehg073-0SQBsjiEyWThe4AKHWXitEjulBKi2k0s5IHcFphGc2g6yCoszJv4w3a8UBM-iomccD41DCl6uTXBRGeA1fNOHhSRarbIBKq8Jj8bWgn0aZg9tfp01hJdp5_5BxPrGHW4Tq6q-CjQDMUQLV89k3UfnYX95m3TEvMcdqiIhWYSsAUWqgYI7hmc2YEQEKm7uWKXssBFlXkWHmiv7MeJqhiMRtCvr-Lek0YeS6SaaEP0OqXEeFByIABnaAgbPIyGOQVzzgkW9ucbAw2OjntHEn01BM1dSUe9E90aBCVD7mbe5CCgdvJkKumANi6y-6x-XYlV1NaAQVrXa4yWZr9n4eqo7grv5dvxlYy7YtrCk7EpR_jHLaZXTgQ5oqKGBgyzqrDZd9JwV9D-amE-_J6kwjylhT6RDpecsv24Qp45mir_P0F8Ac8kOzrEkSedIcnHapE62rSOenIuJGY4ih9XaLot85yOwY5_kWQG8OSEiMi9KahPm9R41hdJs8pnUBA0qZxxnAZD-P5yhFvSiH1z7qVPrOj30PHAwWz0Z_dK1mQpYrXKNmMP-NSvvenlS_vjQnCVCt2LZ4Qef6edPg43Ja8";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5IiwianRpIjoiMDRkNzk1YmQyYzZmZGZiN2UyN2JjN2JiMmUwNTc0NWVhMTEwMmI0OGNiMzMwZDEyNzlkZWRlNzI4ZjhlNzExYzEwYjc1ODJjYmNlZTlhODgiLCJpYXQiOjE3MDE0MTM5OTMuNzg0NTQ0OTQ0NzYzMTgzNTkzNzUsIm5iZiI6MTcwMTQxMzk5My43ODQ1NDk5NTE1NTMzNDQ3MjY1NjI1LCJleHAiOjIxNzQ3OTk1OTMuNzU4OTA2ODQxMjc4MDc2MTcxODc1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.lwKR69Yu0xnSIPlfbX6EvOB5h0DzVqKC1T0tKWshXflw_ezNg6tDikVINv2yn_CuT40fQkfeGIZO8S3Hc0IJ7gEjjo32voit81h_ElF1mN7uG6CzSvcHq-PVXFppPYzPV4cRCrqkPBSYpwl3Q8dPkw3_i4IyHJ11yI8hLUVDF-ITx504XjJHenSCXj7H_kenUqa720pfFlnqXtxQnHZ7RB__ei0yVqwBmec8YpR8BfzZN6ACXxjYZDfJjkhGWNhmAFs9sEXjYw6yTlXYUqS_gxPFo6xWD1PXMrlblMcMbco1VNH7owjzy8xrWO8HonFrKHm2kkO2E1sZwUqBfaWHITGQzaXrjhqCYYMiqT_CuJeCjn0uWCNI1FAIxXdj9GfbLjaP62qLi0DBIzKImWSYSZZWo0gTzurrnjJcbG8zQVfWHfq4vBP4WloA_HQ_qOedLpzvho5z0znD0JcU5hXMwyuTK8J5Jzgd3LXVRtG4skxnqJqHZLfxXBxI38Ro5Px3HDAvS7DDVFXlQLbHmLjfWlA93AmU51bvskEQdkRD1xU45-PG_6bScrk3qCc4OQ1xAdGYM57bP3uiCS3ITd1LGmWPSWK0IbdAXJO2W5iNUnk9u4oKZIoNEaV1e4uzpg-u2vBejpThkqxzkZ_rbsc88Um3esBMRW7mPrzVaiXQpP8";
 const headers = {
   Authorization: `Bearer ${authToken}`,
   "Content-Type": "application/json", // Adjust content type if needed
@@ -55,10 +55,12 @@ export default {
   },
   methods: {
     getHardware() {
-      axios.get("http://localhost/api/v1/hardware", { headers }).then((res) => {
-        this.hardwares = res.data.rows;
-        console.log(this.hardwares);
-      });
+      axios
+        .get("https://mania.bps.go.id/public/api/v1/hardware", { headers })
+        .then((res) => {
+          this.hardwares = res.data.rows;
+          console.log(this.hardwares);
+        });
     },
   },
 };
